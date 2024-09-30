@@ -40,7 +40,7 @@ The application requires the following environment variables:
 | `PROCESSOR_ID`  | The processor ID for your Document AI processor                  |
 | `PORT`          | Port number for running the application (default: 3000)          |
 
-also, you need to add Google Cloud key file to the root of the project and name it `google_cloud_key.json`
+also, you need to add Google Cloud key file to the /keys folder and name it `google_cloud_key.json`
 
 ## Getting Started
 
