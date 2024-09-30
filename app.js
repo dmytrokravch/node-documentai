@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Google Cloud key
-const KEY_FILE_PATH = path.join(__dirname, 'google_cloud_key.json');
+const KEY_FILE_PATH = path.join(__dirname, 'keys/google_cloud_key.json');
 
 // Init Google Document AI
 const client = new DocumentProcessorServiceClient({ keyFilename: KEY_FILE_PATH });
