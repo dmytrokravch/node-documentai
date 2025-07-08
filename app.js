@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const KEY_FILE_PATH = path.join(__dirname, 'keys/google_cloud_key.json');
 
 // Init Google Document AI
-const client = new DocumentProcessorServiceClient({ keyFilename: KEY_FILE_PATH });
+const client = new DocumentProcessorServiceClient({ keyFilename: KEY_FILE_PATH, apiEndpoint: 'eu-documentai.googleapis.com' });
 
 // Configure Multer for file uploads
 const storage = multer.memoryStorage();
@@ -74,6 +74,7 @@ app.post('/parse-document', upload.single('file'), async (req, res) => {
     res.status(200).send(extractedInfo);
   } catch (error) {
     console.error('Error processing document:', error);
+    console.error("fieldViolations", error.statusDetails[0].fieldViolations);
     res.status(500).json({ error: 'Failed to process document' });
   }
 });
