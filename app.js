@@ -54,7 +54,17 @@ function extractEntities(document) {
     const confidence = entity.confidence; // confidence in result
     if (confidence < 0.8) return;
     if (!mentionText) return;
-    extractedData[type] = mentionText;
+    if (extractedData[type]) {
+      // If already exists, append to array
+      if (Array.isArray(extractedData[type])) {
+        extractedData[type].push(mentionText);
+      } else {
+        extractedData[type] = [extractedData[type], mentionText];
+      }
+    } else {
+      // First time, assign as string
+      extractedData[type] = mentionText;
+    }
   });
 
   return extractedData;
